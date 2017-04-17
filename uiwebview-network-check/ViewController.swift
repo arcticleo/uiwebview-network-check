@@ -46,11 +46,8 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
     func webView(_: UIWebView, didFailLoadWithError: Error) {
         checkNetwork()
-        switch NetworkStatus.lastStatus {
-        case .offline:
+        if case .offline = NetworkStatus.lastStatus {
             displayOffline()
-        default:
-            break;
         }
     }
     
