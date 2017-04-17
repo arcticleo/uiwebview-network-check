@@ -15,11 +15,8 @@ struct NetworkStatus {
     static func fireRepeatedOnlineCheck() {
         NetworkStatus.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: {(Void)  in
             ViewController().checkNetwork()
-            switch NetworkStatus.lastStatus {
-            case .online:
+            if case .online = NetworkStatus.lastStatus {
                 ViewController().loadWebApp()
-            default:
-                break
             }
         })
     }
